@@ -19,6 +19,37 @@ exports.index = function(req, res){
 };
 
 
+exports.energyAnalysis = function(req, res){
+	ejs.renderFile('./views/energycomparison.ejs',function(err, result) {
+		// render on success
+		if (!err) {
+			res.end(result);
+		}
+		// render or error
+		else{
+			res.end('An error occurred');
+		    console.log(err);
+		}
+	});
+};
+
+exports.readEnergyData = function(req, res){
+	
+	//read JSON file and render on the browser
+	fs.readFile('data/energy_comparison.json', 'utf8', function (err, data)
+	{
+		if (err)
+		{
+			console.log(err);
+			throw err;
+		}
+		console.log(data);
+		res.write(data);
+		res.end();
+	});
+};
+
+
 //Get solar panel page
 exports.solarpanel = function(req,res){
 	ejs.renderFile('./views/solarpanel.ejs',function(err, result) {

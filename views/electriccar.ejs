@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Energy Visualizer</title>
+    <title>Energy Analytics</title>
     <!-- Bootstrap core CSS -->
     <link href="stylesheets/bootstrap.css" rel="stylesheet">
     
@@ -94,12 +94,13 @@
           <a class="navbar-brand" href="/">Energy Analytics</a>
 			<br>
 			<div id="navigation">
-    		<a href="/">HOME &nbsp;&nbsp;&nbsp;&nbsp;</a>
-    		<a href="/householdanalysis">OVERALL US ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
-    		<a href="/sectorAnalysis">SECTOR WISE ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
-    		<a href="/geo">GEOGRAPHICAL ENERGY PRODUCTION &nbsp;&nbsp;&nbsp;&nbsp;</a>
-    		<a href="/electriccar">ELECTRIC CAR ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
-    		<a href="/solarpanel">SOLAR PANEL ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+<a href="/">HOME &nbsp;&nbsp;&nbsp;</a>
+    		<a href="/householdanalysis">OVERALL US ANALYTICS &nbsp;&nbsp;&nbsp;</a>
+    		<a href="/energyanalysis">STATE WISE ANALYTICS &nbsp;&nbsp;&nbsp;</a>
+    		<a href="/sectorAnalysis">SECTOR WISE ANALYTICS &nbsp;&nbsp;&nbsp;</a>
+    		<a href="/geo">GEOGRAPHICAL ENERGY PRODUCTION &nbsp;&nbsp;&nbsp;</a>
+    		<a href="/electriccar">ELECTRIC CAR ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;</a>
+    		<a href="/solarpanel">SOLAR PANEL ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;</a>
     		<a href="/about">About Us</a>
     		</div>
     		</div>
@@ -108,12 +109,13 @@
 <center>
   	<h3>Summary of Electric Car Energy Consumption over Petroleum Car.</h3>
 <br><br>
-
-		Miles : <input type="number" step="0.01" id="value1" name="miles"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		Amount : <input type="number" step="0.01" id="value2" name="amtpaid" placeholder="Amount" value="0.12"/> $ &nbsp;&nbsp;<br><br>
-		Car Mileage : <input type="number" step="0.01" id="mpg" name="mpg" value="21"/> mpg&nbsp;&nbsp;
-		Amount : <input type="number" step="0.01" id="pamount" name="pamount" placeholder="Amount" value="2.7"/> &nbsp;&nbsp;<br><br> 
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="Submit" value="Calculate" onclick="getInfo()"/>
+<table>
+		<tr><td>HOW MANY MILES DO YOU DRIVE EACH DAY?: <input type="number" step="0.01" id="value1" name="miles"/><br><br></td></tr>
+		<tr><td>HOW MUCH DO YOU PAY PER KILOWATT HOUR? : <input type="number" step="0.01" id="value2" name="amtpaid" placeholder="Amount" value="0.12"/> $ ($0.12 is the national average)<br><br></td></tr>
+		<tr><td>HOW MUCH IS YOUR CAR MILEAGE? : <input type="number" step="0.01" id="mpg" name="mpg" value="21"/> mpg(21mpg is the average for mid-size car)<br><br></td></tr>
+		<tr><td>HOW MUCH DO YOU PAY PER GALON OF GASOLINE? : <input type="number" step="0.01" id="pamount" name="pamount" placeholder="Amount" value="2.7"/><br><br> </td></tr>
+		<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="Submit" value="Calculate" onclick="getInfo()"/>
+</table>
 <br><br>
 		
     </center>

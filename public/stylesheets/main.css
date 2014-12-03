@@ -95,7 +95,7 @@ a:after {
 }
 
 .navbar-inverse {
-	background-color: #1abc9c;
+	background-color: #1dd87c;
 	border-color: #16a085;
 }
 
@@ -243,10 +243,10 @@ bt {
 
 
 #checkoutbutton {	
-   background-color: #33FF00;
+   background-color: #94ba9c;
   -moz-border-radius: 95px;
   -webkit-border-radius: 95px;
-  border: 5px solid #009900;
+  border: 5px solid #566b56;
   padding: 5px;
   height: 200px;
   width: 270px;

@@ -38,7 +38,8 @@ app.get('/about',routes.about);
 app.get('/geo',routes.geo);
 app.post('/geodata',routes.geoData);
 app.get('/electriccar',routes.carAnalysis);
-
+app.get('/energyanalysis',routes.energyAnalysis);
+app.post('/readEnergyData',routes.readEnergyData);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
