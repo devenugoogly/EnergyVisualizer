@@ -1,0 +1,130 @@
+<html>
+  <head>
+  <title>Energy Visualizer</title>
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/main.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["geochart"]});
+      google.setOnLoadCallback(drawVisualization);
+
+     function drawVisualization() {
+    	 var data = 2010; 
+    	 data = document.getElementById("data").value;
+    	 console.log(data);
+    	 var serverData2 = $.ajax({
+             url: 'geodata',
+             type:'POST',
+             data:JSON.stringify(data),
+             context: document.getElementById('visualization'),
+             success: function(serverData) {
+           	  console.log(serverData);
+           	data2 =  google.visualization.arrayToDataTable($.parseJSON(serverData));
+           	geochart = new google.visualization.GeoChart(document.getElementById('visualization'));
+           	geochart.draw(data2, {width: 1400, height: 640, region: "US", resolution: "provinces",
+           		colorAxis: {colors: ['yellow','green']}});
+
+               console.log(serverData);
+             }
+           }); 
+}
+    </script>
+  </head>
+  <body>
+  
+  <!-- Header Part -->
+   <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Energy Analytics</a>
+			<br>
+			<div id="navigation">
+    		<a href="/">HOME &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/householdanalysis">OVERALL US ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/sectorAnalysis">SECTOR WISE ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/geo">GEOGRAPHICAL ENERGY PRODUCTION &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/electriccar">ELECTRIC CAR ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/solarpanel">SOLAR PANEL ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/about">About Us</a>
+    		</div>
+    		</div>
+      </div>
+    </div>
+    
+        
+ <!-- Dynamic part to be changed page wise -->
+
+<center>
+ <h2>Energy Production Data Of US States</h2>
+ <br>
+Select Year: <select id="data">
+<option>2006</option>
+<option>2007</option>
+<option>2008</option>
+<option>2009</option>
+<option>2010</option>
+<option>2011</option>
+<option>2012</option>
+</select>
+<button onclick="drawVisualization()">Click me</button>
+</center>
+ <br> <br>
+<!-- Data Visualization part -->
+<div id="visualization" style="width: 900px; height: 500px;"></div>
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+
+<!-- Footer code  -->
+<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>Copyright</h4>
+					<p>
+						TEAM - 20 <br>
+						CMPE-272 <br>
+						San Jose State University <br>
+						Fall-2014
+						
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<!--h4>My Links</h4>
+					< p>
+						
+						<a href="http://twitter.com">Follow us on Twitter</a><br/>
+						<a href="http://facebook.com">Like us on Facebook</a>
+					</p -->
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>About Energy Analytics</h4>
+          <p>Energy Analytics Description</p>
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</div>
+
+  </body>
+</html>

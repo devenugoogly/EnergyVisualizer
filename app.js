@@ -32,7 +32,12 @@ app.get('/solarpanel', routes.solarpanel);
 app.get('/householdanalysis', routes.household);
 app.get('/Y1Router',routes.Y1Router)
 app.get('/users', user.list);
-app.get('/about',routes.about)
+app.get('/sectorAnalysis', routes.sectorAnalysis);
+app.get('/sectorAnalysisData', routes.sectorAnalysisData);
+app.get('/about',routes.about);
+app.get('/geo',routes.geo);
+app.post('/geodata',routes.geoData);
+app.get('/electriccar',routes.carAnalysis);
 
 
 http.createServer(app).listen(app.get('port'), function(){

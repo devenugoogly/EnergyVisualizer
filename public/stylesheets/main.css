@@ -249,6 +249,77 @@ bt {
   border: 5px solid #009900;
   padding: 5px;
   height: 200px;
-  width: 200px;
+  width: 270px;
   text-align:center;
 }
+
+
+#navigation1 {
+    line-height:50px;
+    background-color:#eeeeee;
+    height:40px;
+    width:60px;
+    float:left;
+    padding:3px; 
+}
+
+#navigation2 {
+    line-height:50px;
+    background-color:#eeeeee;
+    height:40px;
+    width:280px;
+    float:left;
+    padding:3px; 
+}
+
+#navigation3 {
+    line-height:50px;
+    background-color:#eeeeee;
+    height:40px;
+    width:250px;
+    float:left;
+    padding:3px; 
+}
+
+#navigation4 {
+    line-height:50px;
+    background-color:#eeeeee;
+    height:40px;
+    width:250px;
+    float:left;
+    padding:3px; 
+}
+
+#navigation5 {
+    line-height:50px;
+    background-color:#eeeeee;
+    height:40px;
+    width:250px;
+    float:left;
+    padding:3px; 
+}
+
+#navigation {
+position: static;
+top:0;
+width: 100%;
+color: #ffffff;
+height: 0px;
+text-align: left;
+padding-top:40px;
+/* Adds shadow to the bottom of the bar */
+/* Adds the transparent background */
+}
+#navigation a {
+font-size: 10px;
+padding-left: 0px;
+padding-right:0px;
+color: white;
+text-decoration: none;
+}
+
+#navigation a:hover {
+color: grey;
+} 
+
+

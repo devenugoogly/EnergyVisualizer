@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>System Sizing Estimator - Estimate Your Solar Power Requirements</title>
+<title>Energy Visualizer</title>
 
 
 <meta name="description" content="Estimate your solar power requirements to calculates the size and number of solar panel systems needed for your solar system.">	<meta name="keywords" content="Solar Panels, Solar Power Panels, Solar Power Installation, System Sizer, System Sizing Estimator, System Sizing Calculator, Affordable Solar">	<meta name="robots" content="index, follow">	<meta name="googlebot" content="all, index, follow">	<meta name="author" content="Affordable Solar Group">	<meta name="copyright" content="© 2010 Affordable Solar Group, LLC. All rights reserved.">	<meta name="revisit-after" content="5 days">	<meta name="rating" content="General">	<meta name="distribution" content="global">
@@ -33,7 +33,7 @@
 <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" >
 <meta property="fb:admins" content="1805751482">
-<link rel="shortcut icon" href="http://www.affordable-solar.com/site/img/asgfavicon.ico" type="image/x-icon">
+<!-- link rel="shortcut icon" href="http://www.affordable-solar.com/site/img/asgfavicon.ico" type="image/x-icon" -->
 <link rel="stylesheet" href="http://www.affordable-solar.com/site/css/sc-afs-main-as.css?v=1.2.1"/>
 <link rel="stylesheet" href="http://www.affordable-solar.com/site/css/extra-styles.css"/>
 <style type="text/css">#leftcolumn, #breadcrumb { display: none !important; }
@@ -43,6 +43,11 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://www.thinkaffordablesolar.com/wp/wp-content/themes/affordable-solar/js/jq.checkNM.js"></script>
 
+<!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/main.css" rel="stylesheet">
 
 <style type="text/css"> #leftnav li[title="News"] { display: none; } </style><script language='JavaScript' type='text/javascript'>window.status='Loading...';</script><script type='text/javascript' src='/javascript/NLUtil.jsp__NS_VER=2014.2.0&amp;minver=102&amp;locale=en_US.nlqs'></script><script language='JavaScript' type='text/javascript'>window.status='';</script><script type='text/javascript'>ignoreResetDivSizes = true;</script>
 <!-- v=2014.2.0.102 db=727 c=850709 n=1 rg=1 e=0 r=17 ct=WEBSITE isstore=T https=F
@@ -59,8 +64,65 @@
 <link rel='stylesheet' href='http://www.affordable-solar.com/core/styles/pagestyles.nl?ct=89&amp;bglt=E9F2E3&amp;bgmd=ACC49C&amp;bgdk=728367&amp;bgon=978368&amp;bgoff=CEC0A2&amp;bgbar=768784&amp;tasktitletext=FFFFFF&amp;crumbtext=FFFFFF&amp;headertext=FFFFFF&amp;ontab=FFFFFF&amp;offtab=000000&amp;text=000000&amp;link=000000&amp;bgbody=FFFFFF&amp;bghead=FFFFFF&amp;portlet=768784&amp;portletlabel=FFFFFF&amp;bgbutton=D2D2C8&amp;bgrequiredfld=FFFFE5&amp;font=Arial%2CHelvetica%2Csans-serif&amp;size_site_content=9pt&amp;size_site_title=9pt&amp;size=1.0&amp;nlinputstyles=T&amp;NS_VER=2014.2.0&amp;3'>
 
 
+<script type="text/javascript">
+function gt_check()
+{ 
+var a = Number(document.getElementById("txt_akwh").value);
+var b = Number(document.getElementById("txt_sunhrs").value);
+var percent = Number((document.getElementById('txt_percent').value) / 100);
+var c = Math.round(((((a * percent) / 30) / b) / 0.80) * 1000);
+var d = Number((c * 12) * 1.55);
+var e = Number((c * 12 ) / 445);
+var bill = Number(document.getElementById('txt_bill').value);
+var sav1 = Number(bill * 12);
+var sav15 = Number(bill * 180);
+var sav20 = Number(bill * 240);
+var houseval = Number(sav1 * 20);
+document.getElementById("financial").innerHTML = "<br /><span style=\"padding:5px; width:98%; display:block; position:relative; background-color:#cccccc;\"><strong>Financial Benefits</strong></span>";
+document.getElementById("utilize").innerHTML = "<p><strong>If you utilize solar for 100% of your electricity needs, </p></strong>";
+document.getElementById("housevalue").innerHTML = "You will add $" + houseval + "in value to your home";
+document.getElementById("savings1").innerHTML = "Over a year, you will save" +sav1+ " in electric bills ";
+document.getElementById("savings15").innerHTML = "Over a year, you will save" +sav15+ " in electric bills ";
+document.getElementById("savings20").innerHTML = "Over a year, you will save" +sav20+ " in electric bills ";
+document.getElementById("wattage").innerHTML = "You will need a system producing " + (c / 1000) + " DC KW to cover " +Math.round(percent * 100)+ " % of your monthly power usage";
+document.getElementById("environmental").innerHTML = "<span style=\"padding:5px; width:98%; display:block; position:relative; background-color:#cccccc;\"><strong>Environmental Benefits</strong></span><br />";
+document.getElementById("trees").innerHTML = "You will eliminate " +Math.round(d)+ " lbs of C02 per year and this is equivalent to planting " +Math.round(e)+ " trees every year</strong><br />" ;	
+}
+
+
+
+</script>
+
 </head>
 <body bgcolor='#FFFFFF' link='#000000' vlink='#000000' alink='#000000' text='#000000' style='margin: 5px 0px 5px 0px;' onload="page_init()">
+  <!-- Header Part -->
+   <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Energy Analytics</a>
+			<br>
+			<div id="navigation">
+    		<a href="/">HOME &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/householdanalysis">OVERALL US ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/sectorAnalysis">SECTOR WISE ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/geo">GEOGRAPHICAL ENERGY PRODUCTION &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/electriccar">ELECTRIC CAR ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/solarpanel">SOLAR PANEL ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/about">About Us</a>
+    		</div>
+    		</div>
+      </div>
+    </div>
+    
+
+
+
+
 <div id='outerwrapper' style='width: 990px;margin: 0 auto;'>
 <div id='innerwrapper'>
 
@@ -425,13 +487,13 @@ $(function(){
             <h2 class="resText">System Sizer</h2>
             <h3 class="resText">Step 1</h3>
             <p class="rciText">
-                Determine your monthly usage <a class="lightbox" href="/site/images/gt_learning/ex_pnmbill.jpg">from your bill</a>.
+                Determine your monthly usage from your bill.
                 This is measured in kWh per month.
             </p><br>
             <div class="rciMiddle">
                 <div class="rciColumn left">
                     <h3 class="resText">Step 2</h3>
-                    Find Your <a href="/stylesheets/images/srmap.gif" class="lightbox">Sun Hours</a>.<br><br>
+                    Find Your Sun Hours.<br><br>
                     <a href="/stylesheets/images/srmap.gif" class="lightbox">
                         <img src="/stylesheets/images/srmapsmall.gif" alt=""><br>
                     </a><a href="/stylesheets/images/srmap.gif" class="lightbox">Click to Enlarge</a><br>
@@ -442,17 +504,16 @@ $(function(){
                     <div style="padding: 0pt 0pt 0pt 8px; margin: 0pt 15px;" class="rciBorder">
                         <form id="gt-form" name="gt-form" method="" action="">
                             <span class="rciText"><strong>Monthly electrical use</strong> <br>
-                                <a href="/site/images/gt_learning/ex_pnmbill.jpg" name="results" class="lightbox" id="results2">
+                                 
                                     (average the kWH on your bill)
-                                </a>
-                                <a href="/site/img/gt_learning/ex_pnmbill.jpg" name="results" id="results"></a>
-<!--                                <a href="/site/img/gt_learning/ex_pnmbill.jpg" name="results" id="results"></a>-->
+                                
+                                
                             </span>
                             <span class="bmatter3">
-                                <a href="/site/images/gt_learning/ex_pnmbill.jpg" name="results" class="lightbox" id="results3">
+                                
 
-                                    <img src="/stylesheets/images/questionmark.jpg" alt="">
-                                </a><br>
+                                    
+                                <br>
                                 <input type="text" name="txt_akwh" class="input" id="txt_akwh" value="" size="10">
                             </span>
                             <span class="bmatternormal"> kwh per month<br>
@@ -470,7 +531,7 @@ $(function(){
                             <span class="bmatternormal">
                                 <input type="text" name="txt_percent" class="input" id="txt_percent" value="" size="10">
                                 %                             <div id="tip">
-							<a href="#" title="This is the percentage of your electric usage(kWh) you would like to cover with your solar system."><img src="/stylesheets/images/questionmark.jpg" alt="Monthly electric bill"></a>
+							<a title="This is the percentage of your electric usage(kWh) you would like to cover with your solar system."></a>
 							</div></span><br>
                             <br>
                             <strong>Average peak sun hours for your location <br></strong>(avg 6 in Sun Belt, 4in NE / NW)*
@@ -478,7 +539,7 @@ $(function(){
 							<a href="#" title="For simplicity, just click on your area in the map of the US.
                                 If you know your solar insolation you can enter it in number form from 1 - 7.
                                 The map provides an annual average and therefor is a conservative number.
-                                Note: This is not the amount of hours a day the sun is out in your area."><img src="/stylesheets/images/questionmark.jpg"></a>
+                                Note: This is not the amount of hours a day the sun is out in your area.">
 							</div>
                             <div class="bmatternormal" id="sunhours" style="display: none;">
                                 For simplicity, just click on your area in the map of the US.
@@ -499,7 +560,7 @@ $(function(){
                 <p style="display: none; visibility: hidden; clear: both;"></p>
                 <div id="rec_system"></div>
                 <div id="system"></div><br>
-                <div id="wattage"></div>
+                <b><div id="wattage"></div></b>
                 <div id="financial"></div>
                 <div id="utilize"></div>
                 <div id="housevalue"></div>
@@ -510,374 +571,489 @@ $(function(){
                 <div id="trees"></div>
             </div>
             <div id="manual-table" class="rciBottom">
-                <h3 class="resText">Manual System Sizing Tool</h3>
+                <h3 class="resText">Sun Hours Chart By State</h3><p>Look at the chart below to get the number of hours per day the Sun shines on your house. Just find the closest big city.</p>
+                
                 <p class="rciText">
-                    Using the amount monthly kWhs from your utility bill, and the amount of sun hours your location receives,
-                    you can find the size of your system, in DC watts, needed to cover 100% of your usage. 
+                <table id="city-solar-table" class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>State</th>
+<th>City</th>
+<th>Avg</th>
+<th></th>
+<th>State</th>
+<th>City</th>
+<th>Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" width="69" height="21">AK</td>
+<td width="154" height="21">Fairbanks</td>
+<td>3.99</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">MO</td>
+<td width="141" height="21">Columbia</td>
+<td>4.73</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">AK</td>
+<td width="154" height="21">Matanuska</td>
+<td>3.55</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">MO</td>
+<td width="141" height="21">St. Louis</td>
+<td>4.38</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">AL</td>
+<td width="154" height="21">Montgomery</td>
+<td>4.23</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">MS</td>
+<td width="141" height="21">Meridian</td>
+<td>4.43</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">AR</td>
+<td width="154" height="21">Bethel</td>
+<td>3.81</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">MT</td>
+<td width="141" height="21">Glasgow</td>
+<td>5.15</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">AR</td>
+<td>4.69</td>
+<td width="154" height="21">Little Rock</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">MT</td>
+<td width="141" height="21">Great Falls</td>
+<td>4.93</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">AZ</td>
+<td width="154" height="21">Tuscon</td>
+<td>6.57</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">MT</td>
+<td width="141" height="21">Summit</td>
+<td>3.99</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">AZ</td>
+<td width="154" height="21">Page</td>
+<td>6.36</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NM</td>
+<td width="141" height="21">Albuquerque</td>
+<td>6.77</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">AZ</td>
+<td width="154" height="21">Pheonix</td>
+<td>6.58</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NB</td>
+<td width="141" height="21">Lincoln</td>
+<td>4.79</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">Santa Maria</td>
+<td>5.94</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NB</td>
+<td width="141" height="21">N. Omaha</td>
+<td>4.90</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">Riverside</td>
+<td>5.87</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NC</td>
+<td width="141" height="21">Cape Hatteras</td>
+<td>5.31</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">Davis</td>
+<td>5.10</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NC</td>
+<td width="141" height="21">Greensboro</td>
+<td>4.71</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">Fresno</td>
+<td>5.38</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">ND</td>
+<td width="141" height="21">Bismark</td>
+<td>5.01</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">Los Angeles</td>
+<td>5.62</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NJ</td>
+<td width="141" height="21">Sea Brook</td>
+<td>4.21</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">Soda Springs</td>
+<td>5.60</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NV</td>
+<td width="141" height="21">Las Vegas</td>
+<td>6.41</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">La Jolla</td>
+<td>4.77</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NV</td>
+<td width="141" height="21">Ely</td>
+<td>5.98</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CA</td>
+<td width="154" height="21">Inyokern</td>
+<td>7.66</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NY</td>
+<td width="141" height="21">Binghampton</td>
+<td>3.16</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CO</td>
+<td width="154" height="21">Grandby</td>
+<td>5.69</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NY</td>
+<td width="141" height="21">Ithica</td>
+<td>3.79</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CO</td>
+<td width="154" height="21">Grand Lake</td>
+<td>5.08</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NY</td>
+<td width="141" height="21">Schenetady</td>
+<td>3.55</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CO</td>
+<td width="154" height="21">Grand Junction</td>
+<td>5.85</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NY</td>
+<td width="141" height="21">Rochester</td>
+<td>3.31</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">CO</td>
+<td width="154" height="21">Boulder</td>
+<td>4.87</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">NY</td>
+<td width="141" height="21">New York City</td>
+<td>4.08</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">DC</td>
+<td width="154" height="21">Washington</td>
+<td>4.23</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">OH</td>
+<td width="141" height="21">Columbus</td>
+<td>4.15</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">FL</td>
+<td width="154" height="21">Apalachicola</td>
+<td>5.49</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">OH</td>
+<td width="141" height="21">Cleveland</td>
+<td>3.94</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">FL</td>
+<td width="154" height="21">Belie Is.</td>
+<td>4.99</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">OK</td>
+<td width="141" height="21">Stillwater</td>
+<td>4.99</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">FL</td>
+<td width="154" height="21">Miami</td>
+<td>5.62</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">OK</td>
+<td width="141" height="21">Oklahoma City</td>
+<td>5.59</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">FL</td>
+<td width="154" height="21">Gainsville</td>
+<td>5.27</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">OR</td>
+<td width="141" height="21">Astoria</td>
+<td>3.72</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">FL</td>
+<td width="154" height="21">Tampa</td>
+<td>5.67</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">OR</td>
+<td width="141" height="21">Corvallis</td>
+<td>4.03</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">GA</td>
+<td width="154" height="21">Atlanta</td>
+<td>4.74</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">OR</td>
+<td width="141" height="21">Medford</td>
+<td>4.51</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">GA</td>
+<td width="154" height="21">Griffin</td>
+<td>4.99</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">PA</td>
+<td width="141" height="21">Pittsburg</td>
+<td>3.28</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">HI</td>
+<td width="154" height="21">Honolulu</td>
+<td>6.02</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">PA</td>
+<td width="141" height="21">State College</td>
+<td>3.91</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">IA</td>
+<td width="154" height="21">Ames</td>
+<td>4.40</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">RI</td>
+<td width="141" height="21">Newport</td>
+<td>4.23</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">ID</td>
+<td width="154" height="21">Boise</td>
+<td>4.92</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">SC</td>
+<td width="141" height="21">Charleston</td>
+<td>5.06</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">ID</td>
+<td width="154" height="21">Twin Falls</td>
+<td>4.70</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">SD</td>
+<td width="141" height="21">Rapid City</td>
+<td>5.23</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">IL</td>
+<td width="154" height="21">Chicago</td>
+<td>3.14</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">TN</td>
+<td width="141" height="21">Nashville</td>
+<td>4.45</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">IN</td>
+<td width="154" height="21">Indianapolis</td>
+<td>4.21</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">TN</td>
+<td width="141" height="21">Oak Ridge</td>
+<td>4.37</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">KN</td>
+<td width="154" height="21">Manhattan</td>
+<td>4.57</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">TX</td>
+<td width="141" height="21">San Antonio</td>
+<td>5.30</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">KN</td>
+<td width="154" height="21">Dodge City</td>
+<td>5.79</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">TX</td>
+<td width="141" height="21">Brownsville</td>
+<td>4.92</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">KY</td>
+<td width="154" height="21">Lexington</td>
+<td>4.94</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">TX</td>
+<td width="141" height="21">El Paso</td>
+<td>6.72</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">LA</td>
+<td width="154" height="21">Lake Charles</td>
+<td>4.93</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">TX</td>
+<td width="141" height="21">Midland</td>
+<td>5.83</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">LA</td>
+<td width="154" height="21">New Orleans</td>
+<td>4.92</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">TX</td>
+<td width="141" height="21">Fort Worth</td>
+<td>5.43</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">LA</td>
+<td width="154" height="21">Shreveport</td>
+<td>4.63</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">UT</td>
+<td width="141" height="21">Salt Lake City</td>
+<td>5.26</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MA</td>
+<td width="154" height="21">E. Wareham</td>
+<td>3.99</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">UT</td>
+<td width="141" height="21">Flaming Gorge</td>
+<td>5.83</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MA</td>
+<td width="154" height="21">Boston</td>
+<td>3.84</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">VA</td>
+<td width="141" height="21">Richmond</td>
+<td>4.13</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MA</td>
+<td width="154" height="21">Blue Hill</td>
+<td>4.05</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WA</td>
+<td width="141" height="21">Seattle</td>
+<td>3.57</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MA</td>
+<td width="154" height="21">Natick</td>
+<td>4.10</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WA</td>
+<td width="141" height="21">Richland</td>
+<td>4.44</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MA</td>
+<td width="154" height="21">Lynn</td>
+<td>3.79</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WA</td>
+<td width="141" height="21">Pullman</td>
+<td>4.73</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MD</td>
+<td width="154" height="21">Silver Hill</td>
+<td>4.47</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WA</td>
+<td width="141" height="21">Spokane</td>
+<td>4.48</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">ME</td>
+<td width="154" height="21">Caribou</td>
+<td>4.19</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WA</td>
+<td width="141" height="21">Prosser</td>
+<td>5.03</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">ME</td>
+<td width="154" height="21">Portland</td>
+<td>4.51</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WI</td>
+<td width="141" height="21">Madison</td>
+<td>4.29</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MI</td>
+<td width="154" height="21">Sault Ste. Marie</td>
+<td>4.20</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WV</td>
+<td width="141" height="21">Charleston</td>
+<td>3.65</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MI</td>
+<td width="154" height="21">E. Lansing</td>
+<td>4.00</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21">WY</td>
+<td width="141" height="21">Lander</td>
+<td>6.06</td>
+</tr>
+<tr>
+<td align="center" width="69" height="21">MN</td>
+<td width="154" height="21">St. Cloud</td>
+<td>4.53</td>
+<td align="center" width="18" height="21"></td>
+<td align="center" width="68" height="21"></td>
+<td width="141" height="21"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+                     
                 </p>
-                <table cellspacing="0" cellpadding="0" width="565px">
-                    <tbody>
-                        <tr>
-                            <td height="27" bgcolor="#669900" width="97" class="bmatterbold">
-                                <div align="center" class="style4 style9">
-                                    <img height="30" width="97" src="/stylesheets/images/gridguide.gif" alt=""><br>
-                                </div>
-                            </td>
-                            <td bgcolor="#cfff6a" width="63">< 3.0</td>
-                            <td bgcolor="#fdf400" width="57">3.5</td>
-                            <td bgcolor="#d0fd00" width="62">4.0</td>
-                            <td bgcolor="#a3f000" width="53">4.5</td>
-                            <td bgcolor="#91d700" width="62">5.0</td>
-                            <td bgcolor="#83c100" width="61">5.5</td>
-                            <td bgcolor="#76ae00" width="61">6.0</td>
-                            <td bgcolor="#669900" width="67">6.5</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">50kWh</td>
-                            <td height="27" align="center" width="63" valign="middle">0.7kw</td>
-                            <td align="center" width="57" valign="middle">0.6kw</td>
-                            <td align="center" width="62" valign="middle">0.5kw</td>
-                            <td align="center" width="53" valign="middle">0.5kw</td>
-                            <td align="center" width="62" valign="middle">0.4kw</td>
-                            <td align="center" width="61" valign="middle">0.4kw</td>
-                            <td align="center" width="61" valign="middle">0.3kw</td>
-                            <td align="center" width="67" valign="middle">0. kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#e4e4e4" class="bmatterbold">100kWh</td>
-                            <td height="27" align="center" valign="middle">1.4kw</td>
-                            <td align="center" valign="middle">1.2kw</td>
-                            <td align="center" valign="middle">1.0kw</td>
-                            <td align="center" valign="middle">0.9kw</td>
-                            <td align="center" valign="middle">0.8kw</td>
-                            <td align="center" valign="middle">0.8kw</td>
-                            <td align="center" valign="middle">0.7kw</td>
-                            <td align="center" valign="middle">0.6kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">150kWh</td>
-                            <td height="27" align="center" valign="middle">2.0kw</td>
-                            <td align="center" valign="middle">1.7kw</td>
-                            <td align="center" valign="middle">1.5kw</td>
-                            <td align="center" valign="middle">1.4kw</td>
-                            <td align="center" valign="middle">1.2kw</td>
-                            <td align="center" valign="middle">1.2kw</td>
-                            <td align="center" valign="middle">1.0kw</td>
-                            <td align="center" valign="middle">0.9kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#dadada" class="bmatterbold">200kWh</td>
-                            <td height="27" align="center" valign="middle">2.7kw</td>
-                            <td align="center" valign="middle">2.3 kw</td>
-                            <td align="center" valign="middle">2.0kw</td>
-                            <td align="center" valign="middle">1.8kw</td>
-                            <td align="center" valign="middle">1.6kw</td>
-                            <td align="center" valign="middle">1.6kw</td>
-                            <td align="center" valign="middle">1.4kw</td>
-                            <td align="center" valign="middle">1.2kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">250kWh</td>
-                            <td height="27" align="center" valign="middle">3.4kw</td>
-                            <td align="center" valign="middle">2.9kw</td>
-                            <td align="center" valign="middle">2.5kw</td>
-                            <td align="center" valign="middle">2.3kw</td>
-                            <td align="center" valign="middle">2.0kw</td>
-                            <td align="center" valign="middle">2.0kw</td>
-                            <td align="center" valign="middle">1.7kw</td>
-                            <td align="center" valign="middle">1.6kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#c9c9c9" class="bmatterbold">300kWh</td>
-                            <td height="27" align="center" valign="middle">4.1kw</td>
-                            <td align="center" valign="middle">3.5kw</td>
-                            <td align="center" valign="middle">3.0kw</td>
-                            <td align="center" valign="middle">2.7kw</td>
-                            <td align="center" valign="middle">2.4kw</td>
-                            <td align="center" valign="middle">2.4kw</td>
-                            <td align="center" valign="middle">2.0kw</td>
-                            <td align="center" valign="middle">1.9kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">350kWh</td>
-                            <td height="27" align="center" valign="middle">4.7kw</td>
-                            <td align="center" valign="middle">4.1kw</td>
-                            <td align="center" valign="middle">3.5kw</td>
-                            <td align="center" valign="middle">3.2kw</td>
-                            <td align="center" valign="middle">2.8kw</td>
-                            <td align="center" valign="middle">2.8kw</td>
-                            <td align="center" valign="middle">2.4kw</td>
-                            <td align="center" valign="middle">2.2kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#e4e4e4" class="bmatterbold">400kWh</td>
-                            <td height="27" align="center" valign="middle">5.4kw</td>
-                            <td align="center" valign="middle">4.6kw</td>
-                            <td align="center" valign="middle">4.1kw</td>
-                            <td align="center" valign="middle">3.6kw</td>
-                            <td align="center" valign="middle">3.2kw</td>
-                            <td align="center" valign="middle">3.2kw</td>
-                            <td align="center" valign="middle">2.7kw</td>
-                            <td align="center" valign="middle">2.5kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">450kWh</td>
-                            <td height="27" align="center" valign="middle">6.1kw</td>
-                            <td align="center" valign="middle">5.2kw</td>
-                            <td align="center" valign="middle">4.6kw</td>
-                            <td align="center" valign="middle">4.1kw</td>
-                            <td align="center" valign="middle">3.6kw</td>
-                            <td align="center" valign="middle">3.6kw</td>
-                            <td align="center" valign="middle">3.0kw</td>
-                            <td align="center" valign="middle">2.8kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#dadada" class="bmatterbold">500kWh</td>
-                            <td height="27" align="center" valign="middle">6.8kw</td>
-                            <td align="center" valign="middle">5.8kw</td>
-                            <td align="center" valign="middle">5.1kw</td>
-                            <td align="center" valign="middle">4.5kw</td>
-                            <td align="center" valign="middle">4.1kw</td>
-                            <td align="center" valign="middle">4.1kw</td>
-                            <td align="center" valign="middle">3.4kw</td>
-                            <td align="center" valign="middle">3.1kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">550kWh</td>
-                            <td height="27" align="center" valign="middle">7.4kw</td>
-                            <td align="center" valign="middle">6.4kw</td>
-                            <td align="center" valign="middle">5.6kw</td>
-                            <td align="center" valign="middle">5.0kw</td>
-                            <td align="center" valign="middle">4.5kw</td>
-                            <td align="center" valign="middle">4.5kw</td>
-                            <td align="center" valign="middle">3.7kw</td>
-                            <td align="center" valign="middle">3.4kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#c9c9c9" class="bmatterbold">600kWh</td>
-                            <td height="27" align="center" valign="middle">8.1kw</td>
-                            <td align="center" valign="middle">6.9kw</td>
-                            <td align="center" valign="middle">6.1kw</td>
-                            <td align="center" valign="middle">5.4kw</td>
-                            <td align="center" valign="middle">4.9kw</td>
-                            <td align="center" valign="middle">4.9kw</td>
-                            <td align="center" valign="middle">4.1kw</td>
-                            <td align="center" valign="middle">3.7kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">650kWh</td>
-                            <td height="27" align="center" valign="middle">8.8kw</td>
-                            <td align="center" valign="middle">7.5kw</td>
-                            <td align="center" valign="middle">6.6kw</td>
-                            <td align="center" valign="middle">5.9kw</td>
-                            <td align="center" valign="middle">5.3kw</td>
-                            <td align="center" valign="middle">5.3kw</td>
-                            <td align="center" valign="middle">4.4kw</td>
-                            <td align="center" valign="middle">4.1kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#e4e4e4" class="bmatterbold">700kWh</td>
-                            <td height="27" align="center" valign="middle">9.5kw</td>
-                            <td align="center" valign="middle">8.1kw</td>
-                            <td align="center" valign="middle">7.1kw</td>
-                            <td align="center" valign="middle">6.3kw</td>
-                            <td align="center" valign="middle">5.7kw</td>
-                            <td align="center" valign="middle">5.7kw</td>
-                            <td align="center" valign="middle">4.7kw</td>
-                            <td align="center" valign="middle">4.4kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">750kWh</td>
-                            <td height="27" align="center" valign="middle">10.1kw</td>
-                            <td align="center" valign="middle">8.7kw</td>
-                            <td align="center" valign="middle">7.6kw</td>
-                            <td align="center" valign="middle">6.8kw</td>
-                            <td align="center" valign="middle">6.1kw</td>
-                            <td align="center" valign="middle">6.1kw</td>
-                            <td align="center" valign="middle">5.1kw</td>
-                            <td align="center" valign="middle">4.7kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#dadada" class="bmatterbold">800kWh</td>
-                            <td height="27" align="center" valign="middle">10.8kw</td>
-                            <td align="center" valign="middle">9.3kw</td>
-                            <td align="center" valign="middle">8.1kw</td>
-                            <td align="center" valign="middle">7.2kw</td>
-                            <td align="center" valign="middle">6.5kw</td>
-                            <td align="center" valign="middle">6.5kw</td>
-                            <td align="center" valign="middle">5.4kw</td>
-                            <td align="center" valign="middle">5.0kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">850kWh</td>
-                            <td height="27" align="center" valign="middle">11.5kw</td>
-                            <td align="center" valign="middle">9.8kw</td>
-                            <td align="center" valign="middle">8.6kw</td>
-                            <td align="center" valign="middle">7.7kw</td>
-                            <td align="center" valign="middle">6.9kw</td>
-                            <td align="center" valign="middle">6.9kw</td>
-                            <td align="center" valign="middle">5.7kw</td>
-                            <td align="center" valign="middle">5.3kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#c9c9c9" class="bmatterbold">900kWh</td>
-                            <td height="27" align="center" valign="middle">12.2kw</td>
-                            <td align="center" valign="middle">10.4kw</td>
-                            <td align="center" valign="middle">9.1kw</td>
-                            <td align="center" valign="middle">8.1kw</td>
-                            <td align="center" valign="middle">7.3kw</td>
-                            <td align="center" valign="middle">7.3kw</td>
-                            <td align="center" valign="middle">6.1kw</td>
-                            <td align="center" valign="middle">5.6kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">950kWh</td>
-                            <td height="27" align="center" valign="middle">12.8kw</td>
-                            <td align="center" valign="middle">11.0kw</td>
-                            <td align="center" valign="middle">9.6kw</td>
-                            <td align="center" valign="middle">8.6kw</td>
-                            <td align="center" valign="middle">7.7kw</td>
-                            <td align="center" valign="middle">7.7kw</td>
-                            <td align="center" valign="middle">6.4kw</td>
-                            <td align="center" valign="middle">5.9kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#e4e4e4" class="bmatterbold">1000kWh</td>
-                            <td height="27" align="center" valign="middle">13.5kw</td>
-                            <td align="center" valign="middle">11.6kw</td>
-                            <td align="center" valign="middle">10.1kw</td>
-                            <td align="center" valign="middle">9.0kw</td>
-                            <td align="center" valign="middle">8.1kw</td>
-                            <td align="center" valign="middle">8.1kw</td>
-                            <td align="center" valign="middle">6.8kw</td>
-                            <td align="center" valign="middle">6.2kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">1050kWh</td>
-                            <td height="27" align="center" valign="middle">14.2kw</td>
-                            <td align="center" valign="middle">12.2kw</td>
-                            <td align="center" valign="middle">10.6kw</td>
-                            <td align="center" valign="middle">9.5kw</td>
-                            <td align="center" valign="middle">8.5kw</td>
-                            <td align="center" valign="middle">8.5kw</td>
-                            <td align="center" valign="middle">7.1kw</td>
-                            <td align="center" valign="middle">6.5kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#e4e4e4" class="bmatterbold">1100kWh</td>
-                            <td height="27" align="center" valign="middle">14.9kw</td>
-                            <td align="center" valign="middle">12.7kw</td>
-                            <td align="center" valign="middle">11.1kw</td>
-                            <td align="center" valign="middle">9.9kw</td>
-                            <td align="center" valign="middle">8.9kw</td>
-                            <td align="center" valign="middle">8.9kw</td>
-                            <td align="center" valign="middle">7.4kw</td>
-                            <td align="center" valign="middle">6.9kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">1150kWh</td>
-                            <td height="27" align="center" valign="middle">15.5kw</td>
-                            <td align="center" valign="middle">13.3kw</td>
-                            <td align="center" valign="middle">11.6kw</td>
-                            <td align="center" valign="middle">10.4kw</td>
-                            <td align="center" valign="middle">9.3kw</td>
-                            <td align="center" valign="middle">9.3kw</td>
-                            <td align="center" valign="middle">7.8kw</td>
-                            <td align="center" valign="middle">7.2kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#c9c9c9" class="bmatterbold">1200kWh</td>
-                            <td height="27" align="center" valign="middle">16.2kw</td>
-                            <td align="center" valign="middle">13.9kw</td>
-                            <td align="center" valign="middle">12.2kw</td>
-                            <td align="center" valign="middle">10.8kw</td>
-                            <td align="center" valign="middle">9.7kw</td>
-                            <td align="center" valign="middle">9.7kw</td>
-                            <td align="center" valign="middle">8.1kw</td>
-                            <td align="center" valign="middle">7.5kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">1250kWh</td>
-                            <td height="27" align="center" valign="middle">16.9kw</td>
-                            <td align="center" valign="middle">14.5kw</td>
-                            <td align="center" valign="middle">12.7kw</td>
-                            <td align="center" valign="middle">11.3kw</td>
-                            <td align="center" valign="middle">10.1kw</td>
-                            <td align="center" valign="middle">10.1kw</td>
-                            <td align="center" valign="middle">8.4kw</td>
-                            <td align="center" valign="middle">7.8kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#e4e4e4" class="bmatterbold">1300kWh</td>
-                            <td height="27" align="center" valign="middle">17.6kw</td>
-                            <td align="center" valign="middle">15.0kw</td>
-                            <td align="center" valign="middle">13.2kw</td>
-                            <td align="center" valign="middle">11.7kw</td>
-                            <td align="center" valign="middle">10.5kw</td>
-                            <td align="center" valign="middle">10.5kw</td>
-                            <td align="center" valign="middle">8.8kw</td>
-                            <td align="center" valign="middle">8.1kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">1350kWh</td>
-                            <td height="27" align="center" valign="middle">18.2kw</td>
-                            <td align="center" valign="middle">15.6kw</td>
-                            <td align="center" valign="middle">13.7kw</td>
-                            <td align="center" valign="middle">12.2kw</td>
-                            <td align="center" valign="middle">10.9 kw</td>
-                            <td align="center" valign="middle">10.9kw</td>
-                            <td align="center" valign="middle">9.1kw</td>
-                            <td align="center" valign="middle">8.4kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#e4e4e4" class="bmatterbold">1400kWh</td>
-                            <td height="27" align="center" valign="middle">18.9kw</td>
-                            <td align="center" valign="middle">16.2kw</td>
-                            <td align="center" valign="middle">14.2kw</td>
-                            <td align="center" valign="middle">12.6kw</td>
-                            <td align="center" valign="middle">11.3kw</td>
-                            <td align="center" valign="middle">11.3kw</td>
-                            <td align="center" valign="middle">9.5kw</td>
-                            <td align="center" valign="middle">8.7kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">1450kWh</td>
-                            <td height="27" align="center" valign="middle">19.6kw</td>
-                            <td align="center" valign="middle">16.8kw</td>
-                            <td align="center" valign="middle">14. kw</td>
-                            <td align="center" valign="middle">13.1kw</td>
-                            <td align="center" valign="middle">11.7kw</td>
-                            <td align="center" valign="middle">11.7kw</td>
-                            <td align="center" valign="middle">9.8kw</td>
-                            <td align="center" valign="middle">9.0kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" bgcolor="#c9c9c9" class="bmatterbold">1500kWh</td>
-                            <td height="27" align="center" valign="middle">20.3kw</td>
-                            <td align="center" valign="middle">17.4kw</td>
-                            <td align="center" valign="middle">15.2kw</td>
-                            <td align="center" valign="middle">13.5kw</td>
-                            <td align="center" valign="middle">12.2kw</td>
-                            <td align="center" valign="middle">12.2kw</td>
-                            <td align="center" valign="middle">10.1kw</td>
-                            <td align="center" valign="middle">9.3kw</td>
-                        </tr>
-                        <tr>
-                            <td height="27" class="bmatterbold">1550kWh</td>
-                            <td height="27" align="center" valign="middle">20.9kw</td>
-                            <td align="center" valign="middle">17.9kw</td>
-                            <td align="center" valign="middle">15.7kw</td>
-                            <td align="center" valign="middle">14.0kw</td>
-                            <td align="center" valign="middle">12.6kw</td>
-                            <td align="center" valign="middle">12.6kw</td>
-                            <td align="center" valign="middle">10.5kw</td>
-                            <td align="center" valign="middle">9.7kw</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+              </div>
         </div>
-         <style type="text/css">
+        
+        <style type="text/css">
 
 .right-rail h2{
 color:#007DC3;
@@ -904,15 +1080,7 @@ padding:10px;
 <p>
 There are many terms for a residential solar energy system, such as grid-tie (tied into the energy grid), residential solar, and home solar. They all mean the same thing: a solar electric system that provides clean and renewable power from the sun.
 </P>
-	<h2>Get Started with Solar</h2>
-	<h4>Step 1</h4>
-		<p>Determine your usage <a class="lightbox" href="/site/images/gt_learning/ex_pnmbill.jpg">from your bill</a>.</p>
-	<h4>Step 2</h4>
-		<p>Have one of our experts <a href="/residential-solar-home/Request-a-Quote">design a custom system</a> or <a href="/store/grid-tie-kits">select a kit</a>.</p>
-	<h4>Step 3</h4>
-		<p><a href="/Find-an-Installer">Find an installer</a> in your local area.</p>
-	
-    </div>
+	    </div>
     </div>
 </td>
 
@@ -1009,14 +1177,44 @@ window.negativesuffix ='';
 window.number_blacklist_regex = new RegExp('[^\\.\\-\\d]','g');
 window.datetime_am_string ='am';
 window.datetime_pm_string ='pm';
-window.datetime_short_months = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","");window.phoneformat ="(123) 456-7890";window.loadcomplete = true;}
-</script></body>
-</html>
+window.datetime_short_months = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","");window.phoneformat ="(123) 456-7890";window.loadcomplete = true;}</script>
+
+
+<!-- Footer code  -->
+<!-- Footer code  -->
+<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>Copyright</h4>
+					<p>
+						TEAM - 20 <br>
+						CMPE-272 <br>
+						San Jose State University <br>
+						Fall-2014
+						
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<!--h4>My Links</h4>
+					< p>
+						
+						<a href="http://twitter.com">Follow us on Twitter</a><br/>
+						<a href="http://facebook.com">Like us on Facebook</a>
+					</p -->
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>About Energy Analytics</h4>
+          <p>Energy Analytics Description</p>
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</div>
 
 
 
-<!-- 452 s: 41% #98 co: 32% #200-->
-<!-- #184/131 #1/4  #9-->
-<!-- [ sh.j63.sv ] [ 2014.2.0.102 ]-->
-<!-- [ 850709 ] [  ] [ /s.nl ] [ Wed Nov 26 12:36:50 PST 2014 ] -->
-<!-- Not logging slowest SQL -->
+</body></html>

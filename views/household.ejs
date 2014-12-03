@@ -31,12 +31,12 @@
           isStacked: true,
           series: {1: {targetAxisIndex: 1, type: 'line'}},
           seriesType: 'bars',
-          title: 'Year Vs Production vs Land harvested',
+          title: 'Year Vs Production vs Consumption',
           titleTextStyle: {fontSize: 18},
           tooltip: {showColorCode: true},
           vAxes: [
-            {title: 'Land harvested (in thousands of Hectares)', titleTextStyle: {fontSize: 16}},
-            {title: 'Total value of Produce (in Millions of dollars)', titleTextStyle: {fontSize: 16}}
+            {title: 'Energy Production (in Btu)', titleTextStyle: {fontSize: 16}},
+            {title: 'Energy Consumption (in Btu)', titleTextStyle: {fontSize: 16}}
           ]
         };
 
@@ -66,7 +66,7 @@
   <body>
   
   <!-- Header Part -->
-    <div class="navbar navbar-inverse navbar-static-top">
+   <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -74,15 +74,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="about">Energy Visualizer</a>
-        </div>
+          <a class="navbar-brand" href="/">Energy Analytics</a>
+			<br>
+			<div id="navigation">
+    		<a href="/">HOME &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/householdanalysis">OVERALL US ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/sectorAnalysis">SECTOR WISE ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/geo">GEOGRAPHICAL ENERGY PRODUCTION &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/electriccar">ELECTRIC CAR ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/solarpanel">SOLAR PANEL ENERGY ANALYTICS &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    		<a href="/about">About Us</a>
+    		</div>
+    		</div>
       </div>
     </div>
     
  <!-- Dynamic part to be changed page wise -->   
-
+<center>
+<h2>Energy Production Vs. Consumption data of US</h2>
+<br><br>
 <div id="chart22" style="width: 900px; height: 500px;"></div>
-
+</center>
 
 
 <br><br>
@@ -91,24 +103,28 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
-					<h4>Copright</h4>
+					<h4>Copyright</h4>
 					<p>
-						CMPE-272, SJSU
+						TEAM - 20 <br>
+						CMPE-272 <br>
+						San Jose State University <br>
+						Fall-2014
+						
 					</p>
 				</div><!-- /col-lg-4 -->
 				
 				<div class="col-lg-4">
-					<h4>My Links</h4>
-					<p>
+					<!--h4>My Links</h4>
+					< p>
 						
 						<a href="http://twitter.com">Follow us on Twitter</a><br/>
 						<a href="http://facebook.com">Like us on Facebook</a>
-					</p>
+					</p -->
 				</div><!-- /col-lg-4 -->
 				
 				<div class="col-lg-4">
-					<h4>About Energy Visualizer</h4>
-          <p>Energy Visualizer Description</p>
+					<h4>About Energy Analytics</h4>
+          <p>Energy Analytics Description</p>
 				</div><!-- /col-lg-4 -->
 			
 			</div>
